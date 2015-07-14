@@ -1,0 +1,11 @@
+{
+   "name": "poplayer",
+   "version": "1.0.0",
+   "description": "poplayer module",
+   "main": "poptips.js",
+   "files": [
+     "poplayer-alert.handlebars",
+     "poplayer-confirm.handlebars",
+     "poplayer.css"
+   ]
+}
