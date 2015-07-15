@@ -4,40 +4,55 @@
  * @email JerroldLi@163.com
  * @update 2015.07.14
  */
+
+/*1.显示弹出层提示框
+Poplayer.showAlert({msg: '收藏成功'})*/
+
+/*2.显示弹出层确认框
+Poplayer.showConfirm({
+    msg: '你确定要删除此信息？',
+    buttons: [
+      {text: '确定',style: 'poplayer-confirm',fun:function(){alert('确定')}},
+      {text: '取消',style: 'poplayer-cancel',fun:function(){alert('取消')}}
+    ]
+});*/
+
+/*3.显示弹出层交互框
+Poplayer.showInteract({
+    contentHtml: $contentHtml
+});*/
+
 var AlertTpl = __inline('poplayer-alert.handlebars');
 var ConfirmTpl = __inline('poplayer-confirm.handlebars');
+var ButtonTpl = __inline('poplayer-button.handlebars');
 
-var $ = require('$');
 var touchType = 'click';
-
-var createAlertTpl = AlertTpl();
-var createConfirmTpl = ConfirmTpl();
 
 var Poplayer = {
     showAlert: function(conf) {
         var defaultConf = {
-            autoHide: true,
+            autoHide: false,
             timeout: 3000,
             isClickHide: true,
             msg: '',
             callback: null
         };
 
-        this.hideAlert();
+        this.destory();
         var conf = $.extend(defaultConf, conf);
-        var html = createAlertTpl(conf);
+        var html = AlertTpl(conf);
         var dom = $(html);
-        if ($('.notice').length) {
-            $('.notice_alert').show();
+        if ($('.poplayer').length) {
+            $('.poplayer-alert').show();
         } else {
             $('body').append(dom).show().removeAttr('style');
-            $('body').find('.notice_alert').show();
+            $('body').find('.poplayer-alert').show();
 
         }
 
         if (conf.isClickHide) {
-            $(document).on(touchType, '.notice_alert', function() {
-                $('.notice').hide();
+            $(document).on(touchType, '.poplayer-alert', function() {
+                $('.poplayer').hide();
                 conf.callback && conf.callback();
             });
         }
@@ -45,44 +60,68 @@ var Poplayer = {
 
         if (conf.autoHide) {
             setTimeout(function() {
-                $('.notice').hide();
+                $('.poplayer').hide();
                 conf.callback && conf.callback();
             }, conf.timeout);
         }
-    },
-    hideAlert: function() {
-        $('.notice_alert').remove();
-    },
 
+        this.bindEvents();
+    },
     showConfirm: function(conf) {
         var buttons = conf.buttons;
-        var creatButtonTpl = '<a href="javascript:void(0);" class="notice_button <%=style%>"><%=text%></a>';
 
         if (!conf.msg) {
             alert('请输入msg!');
             return false;
         }
 
-        var confirm = $(createConfirmTpl(conf));
-        var opera = confirm.find('.notice_opera');
+        var $confirm = $(ConfirmTpl(conf));
+        var opera = $confirm.find('.poplayer-opera');
 
         for (var i = 0, len = buttons.length; i < len; i++) {
             var btnConf = buttons[i];
-            var btnTpl = creatButtonTpl(btnConf);
+            var btnTpl = ButtonTpl(btnConf);
             console.log(btnTpl);
             var btnObj = $(btnTpl);
             btnConf.fun && btnObj.on('click', btnConf.fun);
             opera.append(btnObj);
         }
+        $('body').append($confirm);
+        $confirm.show();
 
-        $('body').append(confirm);
+        this.fixPosition(conf);
+        this.bindEvents();
     },
-    hideConfirm: function() {
-        $('.notice_confirm').remove();
+    showInteract: function(conf) {
+        var $confirm = $(ConfirmTpl());
+        $('body').append($confirm);
+
+        var $contentHtml = $(conf.contentHtml);
+        $('.poplayer-content', $confirm).html($contentHtml);
+
+        $confirm.show();
+        this.fixPosition(conf);
+        this.bindEvents();
+    },
+    fixPosition: function(conf) {
+        var $confirmWrap = $('.confirm-wrap');
+        var width = $confirmWrap.width();
+        var height = $confirmWrap.height();
+        $confirmWrap.css({
+            'width': width,
+            'height': height,
+            'margin-top': - height / 2,
+            'margin-left': - width / 2
+        });
     },
     destory: function() {
-        $('.notice_alert').remove();
-        $('.notice_confirm').remove();
+        $('.poplayer').remove();
+    },
+    bindEvents: function() {
+        var _this = this;
+        $('.J-poplayer-close').on(touchType, function() {
+            _this.destory();
+        });
     }
 };
 

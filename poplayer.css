@@ -1,81 +1,94 @@
-.notice{
-    display: none;
-    font-family: "SimHei";
-    position: fixed;
-    left:0;
-    top:0;
-    bottom:0;
-    right: 0;
-    background: rgba(0,0,0,.1);
-    color: #fff;
-    z-index: 450;
-    .alert_wrap {
-        width: 450rem;
-        padding: 20rem;
-        margin-top: -80rem;
-        margin-left: -245rem;
-        top: 50%;
-        left: 50%;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 8rem;
-        border-radius: 8rem;
-        text-align: center;
-        position: fixed;
-        line-height: 32rem;
-    }
-    .confirm_wrap{
-        width: 450rem;
-        padding: 20rem;
-        margin-top: -80rem;
-        margin-left: -245rem;
-        top: 50%;
-        left: 50%;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 8rem;
-        border-radius: 8rem;
-        text-align: center;
-        position: fixed;
-        line-height: 32rem;
-        text-align: center;
-        .notice_opera {
-            display: -webkit-box;
-            display: -ms-box;
-            display: box;
-        }
-        .notice_msg{
-            padding: 30rem 0 40rem 0;
-            text-align: left;
-            line-height: 40rem;
-            font-size: 28rem;
-        }
-        .notice_button{
-            box-flex: 1;
-            -webkit-box-flex: 1;
-            -webkit-ms-flex: 1;
-            border-radius: 10rem;
-            line-height: 70rem;
-            font-size: 30rem;
-            display: block;
-            text-decoration: none;
-            background: #ea4c88;
-            color: #fff;
-        }
-        .notice_button:nth-child(2n+1){
-            margin-right: 6rem;
-        }
-        .notice_button:nth-child(2n){
-            margin-left: 6rem;
-        }
-        .notice_cancel{
-            background: #f0f0f0;
-            color: #333;  
-        }
-        .notice_confirm{
-            background: #ea4c88;
-            color: #fff;  
-        }
-    }
+.poplayer {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  color: #666;
+  font-size: 14px;
+  z-index: 450;
+  background: rgba(0, 0, 0, 0.8);
 }
+
+.alert-wrap {
+    width: 450px;
+    padding: 20px;
+    margin-top: -80px;
+    margin-left: -245px;
+    top: 50%;
+    left: 50%;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    border-radius: 8px;
+    text-align: center;
+    position: fixed;
+    line-height: 32px;
+}
+
+.confirm-wrap {
+      width: 80%;
+      height: auto;
+      top: 50%;
+      left: 50%;
+      background: #fff;
+      border-radius: 8px;
+      text-align: center;
+      position: fixed;
+}
+
+.poplayer-opera {
+    display: -webkit-box;
+    display: -ms-box;
+    display: box;
+}
+
+.poplayer-msg{
+    text-align: left;
+    line-height: 40px;
+}
+
+.poplayer-button{
+    box-flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-ms-flex: 1;
+    border-radius: 4px;
+    display: block;
+    text-decoration: none;
+    background: #30B468;
+    color: #fff;
+    padding: 10px 24px;
+    margin: 18px;
+}
+
+.poplayer-button:nth-child(2n+1){
+    margin-right: 6px;
+}
+
+.poplayer-button:nth-child(2n){
+    margin-left: 6px;
+}
+
+.poplayer-cancel{
+    background: #fff;
+    color: #333; 
+    border: 1px solid #CCCCD1; 
+}
+
+.poplayer-close {
+    width: 32px;
+    height: 32px;
+    background: url('close.png') no-repeat;
+    background-size: 32px 32px;
+    position: absolute;
+    top: -12px;
+    right: -16px;
+}
+
+.poplayer-content {
+    padding: 24px 14px;
+}
+
 
 
 
