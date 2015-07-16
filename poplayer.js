@@ -31,7 +31,7 @@ var touchType = 'click';
 var Poplayer = {
     showAlert: function(conf) {
         var defaultConf = {
-            autoHide: false,
+            autoHide: true,
             timeout: 3000,
             isClickHide: true,
             msg: '',
@@ -43,24 +43,23 @@ var Poplayer = {
         var html = AlertTpl(conf);
         var dom = $(html);
         if ($('.poplayer').length) {
-            $('.poplayer-alert').show();
+            $('.poplayer').show();
         } else {
             $('body').append(dom).show().removeAttr('style');
-            $('body').find('.poplayer-alert').show();
+            $('body').find('.poplayer').show();
 
         }
 
         if (conf.isClickHide) {
-            $(document).on(touchType, '.poplayer-alert', function() {
-                $('.poplayer').hide();
+            $(document).on(touchType, '.poplayer', function() {
+                $('.poplayer').fadeOut();
                 conf.callback && conf.callback();
             });
         }
 
-
         if (conf.autoHide) {
             setTimeout(function() {
-                $('.poplayer').hide();
+                $('.poplayer').fadeOut();
                 conf.callback && conf.callback();
             }, conf.timeout);
         }
