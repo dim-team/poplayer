@@ -38,28 +38,27 @@ var Poplayer = {
             callback: null
         };
 
-        this.destory();
         var conf = $.extend(defaultConf, conf);
         var html = AlertTpl(conf);
         var dom = $(html);
-        if ($('.poplayer').length) {
-            $('.poplayer').show();
+        if ($('.poplayer-alert').length) {
+            $('.poplayer-alert').show();
         } else {
             $('body').append(dom).show().removeAttr('style');
-            $('body').find('.poplayer').show();
+            $('body').find('.poplayer-alert').show();
 
         }
 
         if (conf.isClickHide) {
-            $(document).on(touchType, '.poplayer', function() {
-                $('.poplayer').fadeOut();
+            $(document).on(touchType, '.poplayer-alert', function() {
+                $('.poplayer-alert').fadeOut();
                 conf.callback && conf.callback();
             });
         }
 
         if (conf.autoHide) {
             setTimeout(function() {
-                $('.poplayer').fadeOut();
+                $('.poplayer-alert').fadeOut();
                 conf.callback && conf.callback();
             }, conf.timeout);
         }
