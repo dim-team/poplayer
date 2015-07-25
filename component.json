@@ -1,6 +1,6 @@
 {
    "name": "poplayer",
-   "version": "1.0.4",
+   "version": "1.0.5",
    "description": "poplayer module",
    "main": "poplayer.js",
    "files": [

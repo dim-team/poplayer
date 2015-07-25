@@ -64,6 +64,11 @@
     margin: 18px;
 }
 
+.poplayer-button:link {} /* 未访问时的状态 */
+.poplayer-button:visited {border: 1px solid blue;} /* 已访问过的状态 */
+.poplayer-button:hover {border: 1px solid blue;} /* 鼠标移动到链接上时的状态 */
+.poplayer-button:active {border: 1px solid blue;} /* 鼠标按下去时的状态 */
+
 .poplayer-button:nth-child(2n+1){
     margin-right: 6px;
 }

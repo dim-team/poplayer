@@ -80,7 +80,6 @@ var Poplayer = {
         for (var i = 0, len = buttons.length; i < len; i++) {
             var btnConf = buttons[i];
             var btnTpl = ButtonTpl(btnConf);
-            console.log(btnTpl);
             var btnObj = $(btnTpl);
             btnConf.fun && btnObj.on('click', btnConf.fun);
             opera.append(btnObj);
