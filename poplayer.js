@@ -51,14 +51,14 @@ var Poplayer = {
 
         if (conf.isClickHide) {
             $(document).on(touchType, '.poplayer-alert', function() {
-                $('.poplayer-alert').fadeOut();
+                $('.poplayer-alert').fadeOut().remove();
                 conf.callback && conf.callback();
             });
         }
 
         if (conf.autoHide) {
             setTimeout(function() {
-                $('.poplayer-alert').fadeOut();
+                $('.poplayer-alert').fadeOut().remove();
                 conf.callback && conf.callback();
             }, conf.timeout);
         }
