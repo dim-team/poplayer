@@ -1,10 +1,11 @@
 {
    "name": "poplayer",
-   "version": "1.0.8",
+   "version": "1.0.9",
    "description": "poplayer module",
    "main": "poplayer.js",
    "files": [
      "poplayer-alert.handlebars",
+     "poplayer-button.handlebars",
      "poplayer-confirm.handlebars",
      "poplayer.css",
      "close.png"
